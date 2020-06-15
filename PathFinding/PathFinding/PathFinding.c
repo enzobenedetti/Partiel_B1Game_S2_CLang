@@ -162,5 +162,5 @@ void main()
 	//Open data File
 	dataFileOpen("F:\\Ecole\\Partiel\\Prog\\Partiel_B1Game_S2_CLang\\data.txt");
 
-	closedList = push(closedList, startx, starty);
+	closedList = push(closedList, startx[0], starty[0]);
 }
