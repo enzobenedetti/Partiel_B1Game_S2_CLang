@@ -4,11 +4,11 @@
 int grille[10][10] = { NULL };
 int nbr_iteration;
 int step = 0;
-int startx;
-int starty;
-int goalx;
-int goaly;
-int solution;
+int startx[10] = { NULL };
+int starty[10] = { NULL };
+int goalx[10] = { NULL };
+int goaly[10] = { NULL };
+int solution[10] = { NULL };
 
 typedef struct _Node {
 	struct _Node* parent;
@@ -74,14 +74,14 @@ void dataFileOpen(const char* filepath)
 			if (c != " " && c != "\n")
 			{
 				if (startx == NULL)
-					startx = c - 48;
+					startx[i] = c - 48;
 				else if (starty == NULL)
-					starty = c - 48;
+					starty[i] = c - 48;
 				else if (goalx == NULL)
-					goalx = c - 48;
+					goalx[i] = c - 48;
 				else if (goaly == NULL)
-					goaly = c - 48;
-				else solution = c - 48;
+					goaly[i] = c - 48;
+				else solution[i] = c - 48;
 			}
 			if (c == "\n" || c == EOF)
 				i++;
@@ -113,8 +113,8 @@ List push(List list, int x, int y)
 	newnode->y = y;
 
 	newnode->g = step;
-	int readx = goalx - newnode->x;
-	int ready = goaly - newnode->y;
+	int readx = goalx[0] - newnode->x;
+	int ready = goaly[0] - newnode->y;
 	if (readx < 0)
 		readx = -readx;
 	if (ready < 0)
